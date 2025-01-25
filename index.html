@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>線上測驗</title>
+    <script>
+        let questions = [];
+
+        // 載入題庫
+        async function loadQuestions() {
+            const response = await fetch("questions.txt"); // 載入 questions.txt 檔
+            const text = await response.text();
+            const lines = text.trim().split("\n");
+
+            // 將每行轉換為題目結構
+            questions = lines.map(line => {
+                const [question, ...optionsAndAnswer] = line.split("|");
+                const options = optionsAndAnswer.slice(0, 4);
+                const answer = parseInt(optionsAndAnswer[4]);
+                return { question, options, answer };
+            });
+
+            startQuiz();
+        }
+
+        // 隨機抽取題目
+        function getRandomQuestions(total) {
+            return questions.sort(() => 0.5 - Math.random()).slice(0, total);
+        }
+
+        function startQuiz() {
+            const quizContainer = document.getElementById("quiz-container");
+            const selectedQuestions = getRandomQuestions(50);
+            let quizHTML = "";
+
+            selectedQuestions.forEach((q, index) => {
+                quizHTML += `
+                    <div class="question">
+                        <p>${index + 1}. ${q.question}</p>
+                        ${q.options.map((option, i) => `
+                            <label>
+                                <input type="radio" name="q${index}" value="${i + 1}">
+                                ${option}
+                            </label><br>
+                        `).join("")}
+                    </div>
+                `;
+            });
+
+            quizHTML += `
+                <button onclick="submitQuiz()">提交測驗</button>
+            `;
+            quizContainer.innerHTML = quizHTML;
+        }
+
+        function submitQuiz() {
+            const results = document.getElementById("results");
+            const inputs = document.querySelectorAll("input[type='radio']:checked");
+            let score = 0;
+            let incorrectAnswers = [];
+            
+            inputs.forEach((input, index) => {
+                const questionIndex = parseInt(input.name.replace("q", ""));
+                const userAnswer = parseInt(input.value);
+                const correctAnswer = questions[questionIndex].answer;
+
+                if (userAnswer === correctAnswer) {
+                    score += 2;
+                } else {
+                    incorrectAnswers.push({
+                        question: questions[questionIndex].question,
+                        correctAnswer: questions[questionIndex].options[correctAnswer - 1]
+                    });
+                }
+            });
+
+            let resultHTML = `<p>得分：${score} 分</p>`;
+            if (incorrectAnswers.length > 0) {
+                resultHTML += "<h3>答錯題目：</h3><ul>";
+                incorrectAnswers.forEach(inc => {
+                    resultHTML += `<li>${inc.question} (正確答案：${inc.correctAnswer})</li>`;
+                });
+                resultHTML += "</ul>";
+            }
+
+            results.innerHTML = resultHTML;
+        }
+
+        // 初始化
+        window.onload = loadQuestions;
+    </script>
+</head>
+<body>
+    <h1>線上測驗</h1>
+    <div id="quiz-container"></div>
+    <div id="results"></div>
+</body>
+</html>
