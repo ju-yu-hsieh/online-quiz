@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>線上測驗</title>
+    <title>113國技班商管群學科線上測驗(全)</title>
     <script>
         let questions = [];
 
@@ -75,11 +75,11 @@
                 }
             });
 
-            let resultHTML = `<p>得分：${score} 分</p>`;
+            let resultHTML = `<h2><font color="blue">得分：${score} 分</font></h2>`;
             if (incorrectAnswers.length > 0) {
-                resultHTML += "<h3>答錯題目：</h3><ul>";
+                resultHTML += "<h3><font color=#ff0000>答錯題目：</font></h3><ul>";
                 incorrectAnswers.forEach(inc => {
-                    resultHTML += `<li>${inc.question} (正確答案：${inc.correctAnswer})</li>`;
+                    resultHTML += `<li>${inc.question} (正確答案：<font color=#ff0000>${inc.correctAnswer}</font>)</li>`;
                 });
                 resultHTML += "</ul>";
             }
@@ -92,7 +92,13 @@
     </script>
 </head>
 <body>
-    <h1>線上測驗</h1>
+    <h1>113國技班商管群學科線上測驗1-250題(全)隨機抽50題</h1>
+    <h4>新北市三重商工 資處科 謝佳儒老師編製</h4>
+    📢可重複做測試。 
+    📢題目與選項順序會變。 
+    📢測試後可以看到得分與答錯的題目。
+    📢答錯的題目，會顯示正確答案，請背熟做錯的題目。 
+    📢若答案與題本不同，以題本為主。(請跟我說，我再改正線上測驗)
     <div id="quiz-container"></div>
     <div id="results"></div>
 </body>
