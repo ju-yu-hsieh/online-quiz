@@ -3,7 +3,7 @@
 在使用文書處理軟體時，有一段文字的內容為 "ABCDEF"，我們先把插入點放在 "C" 之前，接著按Delete鍵兩次，再按Backspace鍵一次，再用Insert鍵將鍵盤切換到「取代」模式，接著輸入 "X" ，則結果為下列何者？|AXF|AXEF|ABXF|ABX|1
 在使用文書處理軟體時，有一段文字的內容為 "ABCDEF"，我們先把插入點放在"D"之前，再用Insert鍵將鍵盤切換到「插入」模式，接著輸入"BA"，接著按Delete鍵兩次，則結果是下列何者？|ABCF|ABCBAF|ABCD|ABCDBA|2
 很多文件規定第一頁封面頁不編頁碼，第二頁開始編頁碼，請問在Microsoft Word中如何達到這個功能？|版面配置/第一頁不同，插入頁碼。|版面配置/奇偶頁不同，插入頁碼。|游標移到第二頁後，再插入頁碼。|插入頁碼後，再移除第一頁的頁碼|1
-在Microsoft Word中，要完成下圖「黃河之水天上來 奔流到海不復回」的結果，該使用下列何項工具？|橫向文字|組排文字|並列文字|最適文字大小|3
+在Microsoft Word中，要完成下圖「黃河之水天上來 奔流到海不復回」的結果，該使用下列何項工具？<br><img src="images/item06.jpg">|橫向文字|組排文字|並列文字|最適文字大小|3
 在Microsoft Word 中，按下列何種組合鍵，可以插入分頁符號？|Ctrl+Enter|Shift+Tab|Alt+Tab|Shift+Enter|1
 在Microsoft Word 2016中，如果要設定整頁文件的「花邊」，則下列設定的動作何者可以完成？|在版面設定的邊界中設定。|在頁面框線中設定。|在浮水印中設定。|在頁面色彩中設定|2
 Microsoft Word可以讀取哪一種LibreOffice的檔案格式？|ods|odp|odt|odg|3
